@@ -1,8 +1,8 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
 
 class WizardEleven extends Component {
-
     render(){
         return(
             <div className="parent-div">
@@ -13,7 +13,7 @@ class WizardEleven extends Component {
                         <div className="overarching-div">
                             <div className="form">Name: 
                                 <p className="p2">
-                                    {this.props.firstName} {this.props.lastName}
+                                  {this.props.firstName} {this.props.lastName}
                                 </p>
                             </div>
                         </div>
@@ -126,4 +126,25 @@ class WizardEleven extends Component {
     }
 }
 
-export default WizardEleven;
+export default connect( mapStateToProps ) ( WizardEleven )
+
+function mapStateToProps( state ) {
+  return {
+    loanType: state.loanType,
+    propertyType: state.propertyType,
+    city: state.city,
+    propToBeUsedOn: state.propToBeUsedOn,
+    found: state.found,
+    realEstateAgent: state.realEstateAgent,
+    cost: state.cost,
+    downPayment: state.downPayment,
+    credit: state.credit,
+    history: state.history,
+    addressOne: state.addressOne,
+    addressTwo: state.addressTwo,
+    addresThree: state.addresThree,
+    firstName: state.firstName,
+    lastName: state.lastName,
+    email: state.email
+  }
+}

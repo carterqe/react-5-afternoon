@@ -1,9 +1,12 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
+import {updateCity} from '../../ducks/reducer'
 
 class WizardTwo extends Component {
     render(){
-        return(
+        const { updateCity } = this.props
+            return(
             <div className="parent-div">
                 <div className="vert-align">
             
@@ -18,4 +21,12 @@ class WizardTwo extends Component {
     }
 }
 
-export default WizardTwo;
+function mapStateToProps( state ) {
+    const{ city } = state ;
+
+    return {
+        city
+    }
+}
+
+export default connect( mapStateToProps, {updateCity} )(WizardTwo);
